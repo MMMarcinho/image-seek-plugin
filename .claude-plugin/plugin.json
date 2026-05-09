@@ -1,0 +1,16 @@
+{
+  "name": "image-describer",
+  "description": "Image recognition tool for non-multimodal models. Adds describe_image tool that calls vision-capable APIs.",
+  "version": "1.0.0",
+  "author": {
+    "name": "一祉"
+  },
+  "license": "MIT",
+  "keywords": [
+    "vision",
+    "image-recognition",
+    "multimodal",
+    "deepseek",
+    "mcp"
+  ]
+}

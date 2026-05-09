@@ -1,0 +1,18 @@
+{
+  "name": "image-describer-marketplace",
+  "description": "Image Describer plugin marketplace",
+  "owner": {
+    "name": "一祉"
+  },
+  "plugins": [
+    {
+      "name": "image-describer",
+      "description": "Image recognition tool for non-multimodal models. Adds describe_image MCP tool that calls vision-capable APIs (OpenAI/Anthropic compatible). Conditional loading: only activates when using non-multimodal models like DeepSeek.",
+      "version": "1.0.0",
+      "source": "./",
+      "author": {
+        "name": "一祉"
+      }
+    }
+  ]
+}

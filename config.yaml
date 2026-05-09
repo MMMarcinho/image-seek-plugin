@@ -1,0 +1,11 @@
+provider:
+  type: openai
+  endpoint: https://api.openai.com/v1
+  api_key: ${IMAGE_DESCRIBER_API_KEY}
+  model: gpt-4o
+
+non_multimodal_models:
+  - "deepseek-*"
+  - "doubao-*"
+  - "qwen-*"
+  - "glm-*"
