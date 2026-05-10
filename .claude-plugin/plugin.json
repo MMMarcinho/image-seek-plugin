@@ -1,5 +1,5 @@
 {
-  "name": "image-describer",
+  "name": "image-seek",
   "description": "Image recognition tool for non-multimodal models. Adds describe_image tool that calls vision-capable APIs.",
   "version": "1.0.0",
   "author": {

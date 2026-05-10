@@ -1,7 +1,7 @@
 #!/bin/bash
 # SessionStart hook: write enabled flag for MCP server
 MODEL="${ANTHROPIC_MODEL:-}"
-CONFIG="${IMAGE_DESCRIBER_CONFIG:-$HOME/.claude/plugins/data/image-describer/config.yaml}"
+CONFIG="${IMAGE_SEEK_CONFIG:-$HOME/.claude/plugins/data/image-seek/config.yaml}"
 
 if [ -f "$CONFIG" ]; then
     # Delegate to Python for config parsing

@@ -1,9 +1,9 @@
 ---
-name: image-describer
+name: image-seek
 description: Manually describe an image using a vision-capable API. Use when you need image recognition and the main model cannot process images directly.
 ---
 
-# Image Describer
+# Image Seek
 
 Invoke the `describe_image` MCP tool to analyze an image.
 

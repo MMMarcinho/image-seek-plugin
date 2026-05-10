@@ -1,9 +1,20 @@
+# Image Seek Plugin Configuration
+# All provider values can be overridden via environment variables:
+#   IMAGE_SEEK_PROVIDER  -> type
+#   IMAGE_SEEK_ENDPOINT  -> endpoint
+#   IMAGE_SEEK_API_KEY   -> api_key
+#   IMAGE_SEEK_MODEL     -> model
+#
+# The simplest setup: just set these in .claude/settings.json env,
+# no need to edit this file at all.
+
 provider:
   type: openai
   endpoint: https://api.openai.com/v1
-  api_key: ${IMAGE_DESCRIBER_API_KEY}
+  api_key: ${IMAGE_SEEK_API_KEY}
   model: gpt-4o
 
+# Models patterns that should use image seek (non-multimodal)
 non_multimodal_models:
   - "deepseek-*"
   - "doubao-*"

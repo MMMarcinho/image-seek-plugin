@@ -1,4 +1,4 @@
-"""Image Describer MCP Server.
+"""Image Seek MCP Server.
 
 Provides describe_image tool for non-multimodal models.
 Conditionally enabled based on current model's capabilities.
@@ -7,36 +7,12 @@ Conditionally enabled based on current model's capabilities.
 import sys
 from pathlib import Path
 
-# ---------------------------------------------------------------------------
-# The local 'mcp/' package shadows the installed 'mcp' SDK.
-# Temporarily remove local paths so FastMCP loads from the installed SDK,
-# then clear module cache and restore paths for local imports.
-# ---------------------------------------------------------------------------
-_SCRIPT_DIR = str(Path(__file__).parent.absolute())
+# Make image_seek package importable when running as standalone script
 _PROJECT_DIR = str(Path(__file__).parent.parent.absolute())
+if _PROJECT_DIR not in sys.path:
+    sys.path.insert(0, _PROJECT_DIR)
 
-_saved_path = list(sys.path)
-sys.path = [
-    p for p in sys.path
-    if p != _SCRIPT_DIR and p != _PROJECT_DIR and p != ''
-]
-
-from mcp.server.fastmcp import FastMCP  # noqa: E402
-
-# The FastMCP Settings class has a forward-reference to FastMCP itself in the
-# 'lifespan' field. Pydantic cannot resolve this until FastMCP is fully defined.
-# Rebuild the Settings model now that FastMCP has been imported.
-from mcp.server.fastmcp.server import Settings  # noqa: E402
-Settings.model_rebuild()
-
-# Clear SDK modules so local 'from mcp.config import ...' resolves correctly
-for _key in list(sys.modules):
-    if _key == 'mcp' or _key.startswith('mcp.'):
-        del sys.modules[_key]
-
-sys.path = _saved_path
-sys.path.insert(0, _PROJECT_DIR)
-# ---------------------------------------------------------------------------
+from mcp.server.fastmcp import FastMCP
 
 import base64
 try:
@@ -48,13 +24,13 @@ from urllib.parse import urlparse
 
 import httpx
 
-from mcp.config import load_config, is_enabled
-from mcp.providers import create_provider
+from image_seek.config import load_config, is_enabled
+from image_seek.providers import create_provider
 
 config = load_config()
 
 server = FastMCP(
-    "image-describer",
+    "image-seek",
     instructions="Image recognition service for non-multimodal models. "
     "Call describe_image when you need to understand the content of an image.",
 )

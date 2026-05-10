@@ -15,7 +15,7 @@ def resolve_env(value: str) -> str:
 
 def load_config() -> dict:
     config_path = os.environ.get(
-        'IMAGE_DESCRIBER_CONFIG',
+        'IMAGE_SEEK_CONFIG',
         Path(__file__).parent.parent / 'config.yaml'
     )
     with open(config_path) as f:
@@ -25,7 +25,7 @@ def load_config() -> dict:
 
 
 def is_enabled(config: dict) -> bool:
-    """Check if image describer should be enabled for current model."""
+    """Check if image seek should be enabled for current model."""
     model = os.environ.get('ANTHROPIC_MODEL', '')
     if not model:
         return True
